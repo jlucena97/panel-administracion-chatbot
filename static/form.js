@@ -320,7 +320,7 @@ let set_click_events = () =>{
 		});
 	});
 
-	/*$btn_show_user.click(function(event){
+	$btn_show_user.click(function(event){
 		event.preventDefault();
 		console.log('clicked');
 		let user = $(this).html();
@@ -339,10 +339,9 @@ let set_click_events = () =>{
 		let valido = $("#valido").val();
 		console.log(pass);
 		$.post('/setuser',{'user' : user, 'password' : pass, 'valido' : valido}, function(response){
-			console.log(response);
+			$.when(console.log(response)).then(location.href='/validate');
 		});
-	});*/
-	
+	});	
 	$btn_add_question.click(function(event){
 		event.preventDefault();
 		if(!$('.user').val() == "") add_new_input($(this));
