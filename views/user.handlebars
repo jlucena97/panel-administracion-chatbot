@@ -37,8 +37,16 @@
                                 <label for="input-bot">Usuario</label>
                             </div>
                             <div class="md-form">
+                                <input type="password" id="input-actual-pass" class="form-control" name="input-pass" value="">
+                                <label for="input-token">Contraseña Actual</label>
+                            </div>
+                            <div class="md-form">
+                                <input type="password" id="input-new-pass" class="form-control" name="input-pass" value="">
+                                <label for="input-token">Contraseña Nueva</label>
+                            </div>
+                            <div class="md-form">
                                 <input type="password" id="input-pass" class="form-control" name="input-pass" value="">
-                                <label for="input-token">Contraseña</label>
+                                <label for="input-token">Repita Contraseña Nueva</label>
                             </div>
                         {{/if}}
                     {{/each}}
@@ -46,6 +54,7 @@
                 </form>
                 </div>
             </div>
+            <span id="userError"></span>
             <div class="flex-center divBotonesPequennos" >
                 <form action="/" class="formBots">
                     <button class="btn btn-warning botonPequenno intentButton">Volver</button> 
