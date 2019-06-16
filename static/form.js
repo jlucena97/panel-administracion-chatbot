@@ -333,13 +333,25 @@ let set_click_events = () =>{
 
 	$btn_set_user.click(function(event){
 		event.preventDefault();
-		console.log('clicked');
 		let user = $('#input-user').val();
+		let oldpass = $('#input-actual-pass').val();
+		let newpass = $('#input-new-pass').val();
 		let pass = $('#input-pass').val();
 		let valido = $("#valido").val();
-		console.log(pass);
-		$.post('/setuser',{'user' : user, 'password' : pass, 'valido' : valido}, function(response){
-			$.when(console.log(response)).then(location.href='/validate');
+		let ok = false;
+		
+		$.post('/login',{user: user, password: oldpass}, function(response){
+			if(typeof response == 'string') {
+				console.log(newpass);
+				if(newpass != pass) $('#userError').html("Las contraseñas nuevas deben ser identicas");
+				else {
+					$.post('/setuser',{'user' : user, 'password' : newpass, 'valido' : valido}, function(response){
+						$.when(console.log(response)).then(location.href='/validate');
+					});
+				}
+			} else {
+				$('#userError').html("Las contraseña actual no es correcta");
+			}
 		});
 	});
 	
