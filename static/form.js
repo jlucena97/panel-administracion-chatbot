@@ -339,7 +339,8 @@ let set_click_events = () =>{
 		let valido = $("#valido").val();
 		console.log(pass);
 		$.post('/setuser',{'user' : user, 'password' : pass, 'valido' : valido}, function(response){
-			$.when(console.log(response)).then(location.href='/validate');
+			console.log(response);
+			location.href = '/validate';
 		});
 	});	
 	$btn_add_question.click(function(event){
