@@ -341,15 +341,18 @@ let set_click_events = () =>{
 		let ok = false;
 		
 		$.post('/login',{user: user, password: oldpass}, function(response){
-			if(typeof response == 'string') ok = true;
+			if(typeof response == 'string') {
+				console.log(newpass);
+				if(newpass != pass) $('#userError').html("Las contraseñas nuevas deben ser identicas");
+				else {
+					$.post('/setuser',{'user' : user, 'password' : newpass, 'valido' : valido}, function(response){
+						$.when(console.log(response)).then(location.href='/validate');
+					});
+				}
+			} else {
+				$('#userError').html("Las contraseña actual no es correcta");
+			}
 		});
-		if(!ok) $('#userError').html("Las contraseñas actual no es correcta");
-		else if(newpass != pass) $('#userError').html("Las contraseñas nuevas deben ser identicas");
-		else {
-			$.post('/setuser',{'user' : user, 'password' : pass, 'valido' : valido}, function(response){
-				$.when(console.log(response)).then(location.href='/validate');
-			});
-		}
 	});
 	
 	$btn_add_question.click(function(event){
