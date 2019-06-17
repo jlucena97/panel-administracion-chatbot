@@ -812,6 +812,9 @@ app.get('/add',requiresLogin, function(req, res){
 	let user = {"this": {'userlog': req.session.username}};
 	res.render('add_agent',/* user*/);
 });
+app.get('/documentacion',requiresLogin, function(req, res){
+		res.render('documentacion');
+});
 app.post('/add',function(req,res,next){
 	name = req.body.name;
 	token = req.body.token;
