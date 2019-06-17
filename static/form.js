@@ -229,8 +229,7 @@ let set_click_events = () =>{
 	$btns_lateral_menu.click(function(event){
 		event.preventDefault();
 		let link = $(this).children('.opcionNombre').children('a').attr("href");
-		window.open(link,'_blank');
-		//location.href = link;
+		location.href = link;
 	});
 
 	$annadirRespuesta.click(function(event){
